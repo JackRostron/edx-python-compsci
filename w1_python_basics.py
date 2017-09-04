@@ -10,13 +10,13 @@ print("\nPROBLEM SET #1")
 
 s = "aioepoapoeapioeioae"
 vowels = ["a", "e", "i", "o", "u"]
-vowelCount = 0
+vowel_count = 0
 
 for char in s:
     if char in vowels:
-        vowelCount += 1
+        vowel_count += 1
 
-print("Number of vowels: " + str(vowelCount))
+print("Number of vowels: " + str(vowel_count))
 
 
 ################################################################################
@@ -30,17 +30,17 @@ print("\nPROBLEM SET #2")
 
 s = "bobobobboobobobobwobooboboboobvgbobobboboobobooh"
 
-matchString = "bob"
-matchCount = 0
+match_string = "bob"
+match_count = 0
 x = 0
 
 for x in range(0, len(s)):
     subString = s[x:(x + 3)]
-    if subString.count(matchString):
-        matchCount += 1
+    if subString.count(match_string):
+        match_count += 1
     x += 1
 
-print(matchCount)
+print(match_count)
 
 
 ################################################################################
@@ -80,53 +80,53 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
             "n", "o", "p", "q", "r", "s", "t", "u","v", "w", "x", "y", "z"]
 
 iteration = 0
-currentPhrase = ""
-longestPhrase = ""
+current_phrase = ""
+longest_phrase = ""
 
-checkLength = len(s)
+check_length = len(s)
 
-while iteration < checkLength:
+while iteration < check_length:
 
-    if len(currentPhrase) > len(longestPhrase):
-        longestPhrase = currentPhrase
+    if len(current_phrase) > len(longest_phrase):
+        longest_phrase = current_phrase
 
-    startingLetter = s[iteration]
-    startingLetterIndex = alphabet.index(startingLetter)
+    starting_letter = s[iteration]
+    starting_letter_index = alphabet.index(starting_letter)
 
     # Make a current phrase with the starting letter
-    currentPhrase = startingLetter
+    current_phrase = starting_letter
 
     # We aren't out of bounds, keep going
-    if (iteration + 1) < checkLength:
+    if (iteration + 1) < check_length:
 
-        lastLetter = startingLetter
-        lastLetterIndex = startingLetterIndex
+        last_letter = starting_letter
+        last_letter_index = starting_letter_index
 
         # Iterate over the remaining letters until we bail
-        for x in range(iteration + 1, checkLength):
-            nextLetter = s[x]
-            nextIndex = alphabet.index(nextLetter)
-            if nextIndex >= lastLetterIndex:
-                currentPhrase = currentPhrase + nextLetter
+        for x in range(iteration + 1, check_length):
+            next_letter = s[x]
+            next_index = alphabet.index(next_letter)
+            if next_index >= last_letter_index:
+                current_phrase = current_phrase + next_letter
 
                 # Assign our values for the next loop
-                lastLetter = nextLetter
-                lastLetterIndex = nextIndex
+                last_letter = next_letter
+                last_letter_index = next_index
 
                 iteration = x
             else:
                 # Assign our current phrase, reposition the index and go again
-                if len(currentPhrase) > len(longestPhrase):
-                    longestPhrase = currentPhrase
+                if len(current_phrase) > len(longest_phrase):
+                    longest_phrase = current_phrase
                     # print("New longest phrase: " + longestPhrase)
 
                 iteration = x
                 # print("Done: " + currentPhrase)
                 break
     else:
-        iteration = checkLength
+        iteration = check_length
 
         # print("Running " + str(iteration) + " " + str(checkLength))
         break
 
-print("Longest substring in alphabetical order is: " + longestPhrase)
+print("Longest substring in alphabetical order is: " + longest_phrase)
